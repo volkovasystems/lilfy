@@ -42,12 +42,16 @@
 	@end-module-configuration
 
 	@module-documentation:
+		Convert any string data to URI encoded compressed base 64 format.
+
+		When string data reaches 35000 bytes it uses lz-string to compress the data.
 	@end-module-documentation
 
 	@include:
 		{
 			"asea": "asea",
-			"harden": "harden"
+			"harden": "harden",
+			"lzString": "lz-string"
 		}
 	@end-include
 */
@@ -55,6 +59,7 @@
 if( typeof window == "undefined" ){
 	var asea = require( "asea" );
 	var harden = require( "harden" );
+	var lzString = require( "lz-string" );
 }
 
 if( typeof window != "undefined" &&
@@ -69,6 +74,17 @@ if( asea.client &&
 	throw new Error( "harden is not defined" );
 }
 
+if( asea.client &&
+	!( "LZString" in window ) )
+{
+	throw new Error( "LZString is not defined" );
+
+}else if( asea.client &&
+	"LZString" in window )
+{
+	var lzString = LZString;
+}
+
 var lilfy = function lilfy( data ){
 	/*;
 		@meta-configuration:
@@ -78,26 +94,33 @@ var lilfy = function lilfy( data ){
 		@end-meta-configuration
 	*/
 
-	if( typeof data != "string" ||
-		!data )
-	{
+	if( typeof data != "string" || !data ){
 		throw new Error( "invalid data" );
 	}
 
-	if( ( /^x\-[a-zA-Z0-9\%]+?\-\d{13}$/ ).test( data ) ){
+	if( ( /^x{1,2}\-[a-zA-Z0-9\%]+?\-\d{13}$/ ).test( data ) ){
 		return data;
 	}
 
-	if( asea.client ){
-		data = btoa( data );
+	if( ( data.length * 2 ) > 35000 ){
+		data = lzString.compressToBase64( data );
 
-	}else if( asea.server ){
-		data = ( new Buffer( data ) ).toString( "base64" );
+		data = encodeURIComponent( data );
+
+		data = [ "xx", data, Date.now( ) ].join( "-" );
+
+	}else{
+		if( asea.client ){
+			data = btoa( data );
+
+		}else if( asea.server ){
+			data = ( new Buffer( data ) ).toString( "base64" );
+		}
+
+		data = encodeURIComponent( data );
+
+		data = [ "x", data, Date.now( ) ].join( "-" );
 	}
-
-	data = encodeURIComponent( data );
-
-	data = [ "x", data, Date.now( ) ].join( "-" );
 
 	return data;
 };
@@ -111,25 +134,31 @@ harden( "revert", function revert( data ){
 		@end-meta-configuration
 	*/
 
-	if( typeof data != "string" ||
-		!data )
-	{
+	if( typeof data != "string" || !data ){
 		throw new Error( "invalid data" );
 	}
 
-	if( !( /^x\-[a-zA-Z0-9\%]+?\-\d{13}$/ ).test( data ) ){
+	if( !( /^x{1,2}\-[a-zA-Z0-9\%]+?\-\d{13}$/ ).test( data ) ){
 		return data;
 	}
 
-	data = data.split( "-" )[ 1 ];
+	var token = data.split( "-" );
+
+
+	data = token[ 1 ];
 
 	data = decodeURIComponent( data );
 
-	if( asea.client ){
-		data = atob( data );
+	if( token[ 0 ] === "xx" ){
+		data = lzString.decompressFromBase64( data );
 
-	}else if( asea.server ){
-		data = new Buffer( data, "base64" ).toString( "utf8" );
+	}else if( token[ 0 ] === "x" ){
+		if( asea.client ){
+			data = atob( data );
+
+		}else if( asea.server ){
+			data = new Buffer( data, "base64" ).toString( "utf8" );
+		}
 	}
 
 	return data;
