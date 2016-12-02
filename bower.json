@@ -1,6 +1,6 @@
 {
   "name": "lilfy",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "URI encoded base 64 format back and forth.",
   "main": "lilfy.js",
   "authors": [

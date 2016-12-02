@@ -84,7 +84,7 @@ if( asea.client &&
 	let lzString = LZString;
 }
 
-var lilfy = function lilfy( data ){
+const lilfy = function lilfy( data ){
 	/*;
 		@meta-configuration:
 			{
