@@ -1,0 +1,83 @@
+{
+  "name": "lilfy",
+  "version": "0.2.0",
+  "dependencies": {
+    "asea": {
+      "version": "0.4.0",
+      "from": "asea@latest",
+      "resolved": "https://registry.npmjs.org/asea/-/asea-0.4.0.tgz",
+      "dependencies": {
+        "harden": {
+          "version": "0.7.0",
+          "from": "harden@latest",
+          "resolved": "https://registry.npmjs.org/harden/-/harden-0.7.0.tgz"
+        }
+      }
+    },
+    "falzy": {
+      "version": "0.5.0",
+      "from": "falzy@latest",
+      "resolved": "https://registry.npmjs.org/falzy/-/falzy-0.5.0.tgz",
+      "dependencies": {
+        "protype": {
+          "version": "0.4.0",
+          "from": "protype@latest",
+          "resolved": "https://registry.npmjs.org/protype/-/protype-0.4.0.tgz",
+          "dependencies": {
+            "cemento": {
+              "version": "0.3.0",
+              "from": "cemento@latest",
+              "resolved": "https://registry.npmjs.org/cemento/-/cemento-0.3.0.tgz",
+              "dependencies": {
+                "harden": {
+                  "version": "0.7.0",
+                  "from": "harden@latest",
+                  "resolved": "https://registry.npmjs.org/harden/-/harden-0.7.0.tgz"
+                }
+              }
+            },
+            "harden": {
+              "version": "0.7.0",
+              "from": "harden@latest",
+              "resolved": "https://registry.npmjs.org/harden/-/harden-0.7.0.tgz"
+            }
+          }
+        }
+      }
+    },
+    "harden": {
+      "version": "0.7.0",
+      "from": "harden@latest",
+      "resolved": "https://registry.npmjs.org/harden/-/harden-0.7.0.tgz"
+    },
+    "lz-string": {
+      "version": "1.4.4",
+      "from": "lz-string@latest",
+      "resolved": "https://registry.npmjs.org/lz-string/-/lz-string-1.4.4.tgz"
+    },
+    "protype": {
+      "version": "0.4.0",
+      "from": "protype@latest",
+      "resolved": "https://registry.npmjs.org/protype/-/protype-0.4.0.tgz",
+      "dependencies": {
+        "cemento": {
+          "version": "0.3.0",
+          "from": "cemento@latest",
+          "resolved": "https://registry.npmjs.org/cemento/-/cemento-0.3.0.tgz",
+          "dependencies": {
+            "harden": {
+              "version": "0.7.0",
+              "from": "harden@latest",
+              "resolved": "https://registry.npmjs.org/harden/-/harden-0.7.0.tgz"
+            }
+          }
+        },
+        "harden": {
+          "version": "0.7.0",
+          "from": "harden@latest",
+          "resolved": "https://registry.npmjs.org/harden/-/harden-0.7.0.tgz"
+        }
+      }
+    }
+  }
+}

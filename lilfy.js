@@ -34,6 +34,9 @@
 			"file": "lilfy.js",
 			"module": "lilfy",
 			"author": "Richeve S. Bebedor",
+			"contributors": [
+				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
+			],
 			"eMail": "richeve.bebedor@gmail.com",
 			"repository": "https://github.com/volkovasystems/lilfy.git",
 			"test": "lilfy-test.js",
@@ -50,23 +53,19 @@
 	@include:
 		{
 			"asea": "asea",
+			"falzy": "falzy",
 			"harden": "harden",
-			"lzString": "lz-string"
+			"lzString": "lz-string",
+			"protype": "protype"
 		}
 	@end-include
 */
 
-if( typeof window == "undefined" ){
-	var asea = require( "asea" );
-	var harden = require( "harden" );
-	var lzString = require( "lz-string" );
-}
-
-if( typeof window != "undefined" &&
-	!( "asea" in window ) )
-{
-	throw new Error( "asea is not defined" );
-}
+const asea = require( "asea" );
+const falzy = require( "falzy" );
+const harden = require( "harden" );
+const lzString = require( "lz-string" );
+const protype = require( "protype" );
 
 if( asea.client &&
 	!( "harden" in window ) )
@@ -82,7 +81,7 @@ if( asea.client &&
 }else if( asea.client &&
 	"LZString" in window )
 {
-	var lzString = LZString;
+	let lzString = LZString;
 }
 
 var lilfy = function lilfy( data ){
@@ -94,7 +93,7 @@ var lilfy = function lilfy( data ){
 		@end-meta-configuration
 	*/
 
-	if( typeof data != "string" || !data ){
+	if( !protype( data, STRING ) || falzy( data ) ){
 		throw new Error( "invalid data" );
 	}
 
@@ -134,7 +133,7 @@ harden( "revert", function revert( data ){
 		@end-meta-configuration
 	*/
 
-	if( typeof data != "string" || !data ){
+	if( !protype( data, STRING ) || falzy( data ) ){
 		throw new Error( "invalid data" );
 	}
 
@@ -142,7 +141,7 @@ harden( "revert", function revert( data ){
 		return data;
 	}
 
-	var token = data.split( "-" );
+	let token = data.split( "-" );
 
 
 	data = token[ 1 ];
