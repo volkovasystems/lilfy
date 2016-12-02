@@ -67,23 +67,6 @@ const harden = require( "harden" );
 const lzString = require( "lz-string" );
 const protype = require( "protype" );
 
-if( asea.client &&
-	!( "harden" in window ) )
-{
-	throw new Error( "harden is not defined" );
-}
-
-if( asea.client &&
-	!( "LZString" in window ) )
-{
-	throw new Error( "LZString is not defined" );
-
-}else if( asea.client &&
-	"LZString" in window )
-{
-	let lzString = LZString;
-}
-
 const lilfy = function lilfy( data ){
 	/*;
 		@meta-configuration:
@@ -164,6 +147,4 @@ harden( "revert", function revert( data ){
 
 }, lilfy );
 
-if( asea.server ){
-	module.exports = lilfy;
-}
+module.exports = lilfy;
