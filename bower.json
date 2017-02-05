@@ -1,10 +1,8 @@
 {
   "name": "lilfy",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "URI encoded base 64 format back and forth.",
-  "main": "lilfy.js",
-  "support": "lilfy.support.js",
-  "deploy": "lilfy.deploy.js",
+  "main": "lilfy.deploy.js",
   "authors": [
     "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
     "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
@@ -26,10 +24,10 @@
     "tests"
   ],
   "dependencies": {
-    "asea": "^0.7.0",
-    "falzy": "^0.8.0",
-    "harden": "^0.13.0",
+    "falzy": "^0.10.0",
+    "harden": "^0.14.0",
     "lz-string": "^1.4.4",
-    "protype": "^0.9.0"
+    "protype": "^0.14.0",
+    "sxty4": "^0.4.0"
   }
 }

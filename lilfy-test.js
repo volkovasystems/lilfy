@@ -1,3 +1,5 @@
 const lilfy = require( "./lilfy.js" );
 
-console.log( lilfy( "hello" ) )
+let value = lilfy( "hello" );
+console.log( value );
+console.log( lilfy.revert( value ) );

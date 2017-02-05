@@ -52,20 +52,51 @@
 
 	@include:
 		{
-			"asea": "asea",
 			"falzy": "falzy",
 			"harden": "harden",
 			"lzString": "lz-string",
-			"protype": "protype"
+			"protype": "protype",
+			"sxty4": "sxty4"
 		}
 	@end-include
 */
 
-const asea = require( "asea" );
 const falzy = require( "falzy" );
 const harden = require( "harden" );
 const lzString = require( "lz-string" );
 const protype = require( "protype" );
+const sxty4 = require( "sxty4" );
+
+const revert = function revert( data ){
+	/*;
+		@meta-configuration:
+			{
+				"data:required": "string"
+			}
+		@end-meta-configuration
+	*/
+
+	if( falzy( data ) || !protype( data, STRING ) ){
+		throw new Error( "invalid data" );
+	}
+
+	if( !( /^x{1,2}\-[a-zA-Z0-9\%]+?\-\d{13}$/ ).test( data ) ){
+		return data;
+	}
+
+	let token = data.split( "-" );
+
+	data = token[ 1 ];
+
+	if( token[ 0 ] === "xx" ){
+		data = lzString.decompressFromEncodedURIComponent( data );
+
+	}else if( token[ 0 ] === "x" ){
+		data = sxty4( data ).decode( );
+	}
+
+	return data;
+};
 
 const lilfy = function lilfy( data ){
 	/*;
@@ -76,7 +107,7 @@ const lilfy = function lilfy( data ){
 		@end-meta-configuration
 	*/
 
-	if( !protype( data, STRING ) || falzy( data ) ){
+	if( falzy( data ) || !protype( data, STRING ) ){
 		throw new Error( "invalid data" );
 	}
 
@@ -85,21 +116,12 @@ const lilfy = function lilfy( data ){
 	}
 
 	if( ( data.length * 2 ) > 35000 ){
-		data = lzString.compressToBase64( data );
-
-		data = encodeURIComponent( data );
+		data = lzString.compressToEncodedURIComponent( data );
 
 		data = [ "xx", data, Date.now( ) ].join( "-" );
 
 	}else{
-		if( asea.client ){
-			data = btoa( data );
-
-		}else if( asea.server ){
-			data = ( new Buffer( data ) ).toString( "base64" );
-		}
-
-		data = encodeURIComponent( data );
+		data = sxty4( data ).encode( );
 
 		data = [ "x", data, Date.now( ) ].join( "-" );
 	}
@@ -107,44 +129,6 @@ const lilfy = function lilfy( data ){
 	return data;
 };
 
-harden( "revert", function revert( data ){
-	/*;
-		@meta-configuration:
-			{
-				"data:required": "string"
-			}
-		@end-meta-configuration
-	*/
-
-	if( !protype( data, STRING ) || falzy( data ) ){
-		throw new Error( "invalid data" );
-	}
-
-	if( !( /^x{1,2}\-[a-zA-Z0-9\%]+?\-\d{13}$/ ).test( data ) ){
-		return data;
-	}
-
-	let token = data.split( "-" );
-
-
-	data = token[ 1 ];
-
-	data = decodeURIComponent( data );
-
-	if( token[ 0 ] === "xx" ){
-		data = lzString.decompressFromBase64( data );
-
-	}else if( token[ 0 ] === "x" ){
-		if( asea.client ){
-			data = atob( data );
-
-		}else if( asea.server ){
-			data = new Buffer( data, "base64" ).toString( "utf8" );
-		}
-	}
-
-	return data;
-
-}, lilfy );
+harden( "revert", revert, lilfy );
 
 module.exports = lilfy;
