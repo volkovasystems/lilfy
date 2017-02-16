@@ -1,3 +1,5 @@
+"use strict";
+
 const lilfy = require( "./lilfy.js" );
 
 let value = lilfy( "hello" );
