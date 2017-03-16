@@ -20,4 +20,5 @@ harden \
 lz-string \
 protype \
 sxty4 \
---save
+--save \
+--force-latest
