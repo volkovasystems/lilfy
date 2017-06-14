@@ -1,7 +1,9 @@
-"use strict";
 
+const assert = require( "assert" );
 const lilfy = require( "./lilfy.js" );
 
 let value = lilfy( "hello" );
-console.log( value );
-console.log( lilfy.revert( value ) );
+assert.ok( value );
+assert.equal( lilfy.revert( value ), "hello", "should return 'hello'" );
+
+console.log( "ok" );
