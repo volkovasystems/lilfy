@@ -56,7 +56,6 @@
               			"falzy": "falzy",
               			"harden": "harden",
               			"lzString": "lz-string",
-              			"protype": "protype",
               			"sxty4": "sxty4"
               		}
               	@end-include
@@ -65,7 +64,6 @@
 var falzy = require("falzy");
 var harden = require("harden");
 var lzString = require("lz-string");
-var protype = require("protype");
 var sxty4 = require("sxty4");
 
 var revert = function revert(data) {
@@ -77,7 +75,7 @@ var revert = function revert(data) {
                                     	@end-meta-configuration
                                     */
 
-	if (falzy(data) || !protype(data, STRING)) {
+	if (falzy(data) || typeof data != "string") {
 		throw new Error("invalid data");
 	}
 
@@ -108,7 +106,7 @@ var lilfy = function lilfy(data) {
                                   	@end-meta-configuration
                                   */
 
-	if (falzy(data) || !protype(data, STRING)) {
+	if (falzy(data) || typeof data != "string") {
 		throw new Error("invalid data");
 	}
 

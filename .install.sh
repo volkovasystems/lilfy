@@ -3,7 +3,6 @@ babel-runtime \
 falzy \
 harden \
 lz-string \
-protype \
 sxty4 \
 --save && \
 yarn add \
@@ -18,7 +17,6 @@ bower install \
 falzy \
 harden \
 lz-string \
-protype \
 sxty4 \
 --save \
 --force-latest
