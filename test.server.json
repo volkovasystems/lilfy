@@ -1,16 +1,46 @@
 {
-  "stats": {
-    "suites": 0,
-    "tests": 0,
-    "passes": 0,
-    "pending": 0,
-    "failures": 0,
-    "start": "2017-08-29T05:15:46.067Z",
-    "end": "2017-08-29T05:15:46.067Z",
-    "duration": 0
-  },
-  "tests": [],
-  "pending": [],
-  "failures": [],
-  "passes": []
+	"stats": {
+		"suites": 3,
+		"tests": 2,
+		"passes": 2,
+		"pending": 0,
+		"failures": 0,
+		"start": "2017-08-31T04:04:34.620Z",
+		"end": "2017-08-31T04:04:34.630Z",
+		"duration": 10
+	},
+	"tests": [
+		{
+			"title": "should convert string 'hello' to URI encoded compressed base 64 format",
+			"fullTitle": "lilfy `lilfy( 'hello' )` should convert string 'hello' to URI encoded compressed base 64 format",
+			"duration": 2,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should convert URI encoded compressed base 64 format to string format",
+			"fullTitle": "lilfy `lilfy.revert( 'x-aGVsbG8%3D-1504150159927' )` should convert URI encoded compressed base 64 format to string format",
+			"duration": 1,
+			"currentRetry": 0,
+			"err": {}
+		}
+	],
+	"pending": [],
+	"failures": [],
+	"passes": [
+		{
+			"title": "should convert string 'hello' to URI encoded compressed base 64 format",
+			"fullTitle": "lilfy `lilfy( 'hello' )` should convert string 'hello' to URI encoded compressed base 64 format",
+			"duration": 2,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should convert URI encoded compressed base 64 format to string format",
+			"fullTitle": "lilfy `lilfy.revert( 'x-aGVsbG8%3D-1504150159927' )` should convert URI encoded compressed base 64 format to string format",
+			"duration": 1,
+			"currentRetry": 0,
+			"err": {}
+		}
+	]
 }

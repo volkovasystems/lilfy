@@ -66,6 +66,19 @@ const lilfy = require( "./lilfy.js" );
 
 describe( "lilfy", ( ) => {
 
+	describe( "`lilfy( 'hello' )`", ( ) => {
+		it( "should convert string 'hello' to URI encoded compressed base 64 format", ( ) => {
+			assert.equal( typeof lilfy( "hello" ) == "string", true );
+		} );
+	} );
+
+	describe( "`lilfy.revert( 'x-aGVsbG8%3D-1504150159927' )`", ( ) => {
+		it( "should convert URI encoded compressed base 64 format to string format", ( ) => {
+			let value = lilfy( "hello" );
+			assert.equal( lilfy.revert( value ), "hello" );
+		} );
+	} );
+
 } );
 
 //: @end-server

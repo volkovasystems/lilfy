@@ -1,0 +1,116 @@
+{
+	"state": {
+		"passed": 2,
+		"failed": 0,
+		"skipped": 0
+	},
+	"start": "2017-08-31T04:04:36.007Z",
+	"end": "2017-08-31T04:05:18.220Z",
+	"capabilities": {
+		"browserName": "chrome",
+		"chromeOptions": {
+			"args": [
+				"disable-gpu",
+				"headless"
+			]
+		},
+		"proxy": null
+	},
+	"host": "127.0.0.1",
+	"port": 4444,
+	"baseUrl": "http://localhost",
+	"framework": "mocha",
+	"mochaOpts": {
+		"timeout": 10000,
+		"ui": "bdd"
+	},
+	"suites": [
+		{
+			"name": "lilfy",
+			"duration": 0,
+			"start": "2017-08-31T04:05:17.878Z",
+			"tests": [],
+			"hooks": []
+		},
+		{
+			"name": "lilfy",
+			"duration": 160,
+			"start": "2017-08-31T04:05:17.879Z",
+			"end": "2017-08-31T04:05:18.039Z",
+			"tests": [],
+			"hooks": [
+				{
+					"start": "2017-08-31T04:05:17.880Z",
+					"end": "2017-08-31T04:05:17.881Z",
+					"duration": 1,
+					"title": "\"before each\" hook",
+					"associatedSuite": "lilfy",
+					"associatedTest": "should convert string 'hello' to URI encoded compressed base 64 format"
+				},
+				{
+					"start": "2017-08-31T04:05:17.990Z",
+					"end": "2017-08-31T04:05:17.990Z",
+					"duration": 0,
+					"title": "\"after each\" hook",
+					"associatedSuite": "lilfy",
+					"associatedTest": "should convert string 'hello' to URI encoded compressed base 64 format"
+				},
+				{
+					"start": "2017-08-31T04:05:17.991Z",
+					"end": "2017-08-31T04:05:17.991Z",
+					"duration": 0,
+					"title": "\"before each\" hook",
+					"associatedSuite": "lilfy",
+					"associatedTest": "should convert URI encoded compressed base 64 format to string format"
+				},
+				{
+					"start": "2017-08-31T04:05:18.039Z",
+					"end": "2017-08-31T04:05:18.039Z",
+					"duration": 0,
+					"title": "\"after each\" hook",
+					"associatedSuite": "lilfy",
+					"associatedTest": "should convert URI encoded compressed base 64 format to string format"
+				},
+				{
+					"start": "2017-08-31T04:05:18.039Z",
+					"end": "2017-08-31T04:05:18.039Z",
+					"duration": 0,
+					"title": "\"after all\" hook",
+					"associatedSuite": "lilfy"
+				}
+			]
+		},
+		{
+			"name": "`lilfy( 'hello' )`",
+			"duration": 111,
+			"start": "2017-08-31T04:05:17.879Z",
+			"end": "2017-08-31T04:05:17.990Z",
+			"tests": [
+				{
+					"name": "should convert string 'hello' to URI encoded compressed base 64 format",
+					"start": "2017-08-31T04:05:17.880Z",
+					"end": "2017-08-31T04:05:17.989Z",
+					"duration": 109,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		},
+		{
+			"name": "`lilfy.revert( 'x-aGVsbG8%3D-1504150159927' )`",
+			"duration": 48,
+			"start": "2017-08-31T04:05:17.991Z",
+			"end": "2017-08-31T04:05:18.039Z",
+			"tests": [
+				{
+					"name": "should convert URI encoded compressed base 64 format to string format",
+					"start": "2017-08-31T04:05:17.991Z",
+					"end": "2017-08-31T04:05:18.039Z",
+					"duration": 48,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		}
+	]
+}
